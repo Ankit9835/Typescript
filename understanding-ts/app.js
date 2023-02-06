@@ -19,17 +19,50 @@
 // if(person.role === Role.ADMIN){
 //   console.log('is admin')
 // }
-function combine(num1, num2) {
-    var result;
-    if (typeof (num1) === 'number' && typeof (num2) === 'number') {
-        result = num1 + num2;
-    }
-    else {
-        result = num1.toString() + num2.toString();
-    }
-    return result;
+// union types
+// function combine(num1: number | string, num2: number | string){
+//     let result
+//     if(typeof(num1) === 'number' && typeof(num2) === 'number'){
+//       result = num1 + num2
+//     } else{
+//       result = num1.toString() + num2.toString()
+//     }
+//     return result
+// }
+// const integerValue = combine(2,5)
+// console.log(integerValue)
+// literal types
+// alias for data types
+// type Compaitable =  number | string
+// type Description = 'as-number' | 'as-text'
+// function literal(num1: Compaitable, num2: Compaitable, resultConversion: Description){
+//   let result
+//   if(typeof num1 === 'number' && typeof  num2 === 'number' || resultConversion === 'as-number'){
+//     console.log('number')
+//     result = +num1 + +num2
+//   } else{
+//     console.log('string')
+//     result = num1.toString() + num2.toString()
+//   }
+//   return result
+// }
+// const integerValue = literal(2,5, 'as-number')
+// console.log(integerValue)
+// const stringValue = literal('string','test','as-text')
+// console.log(stringValue)
+// function add(num1:number, num2:number){
+//   return num1 + num2
+// }
+// function printResult(num1:number){
+//   console.log('Result is ' + num1)
+// }
+// let combineValues: (a:number, b:number) => number;
+// combineValues = add;
+// console.log(combineValues(2,4))
+function addAndCallBack(n1, n2, cb) {
+    var result = n1 + n2;
+    cb(result);
 }
-var integerValue = combine(2, 5);
-console.log(integerValue);
-var stringValue = combine('test', 'newtest');
-console.log(stringValue);
+addAndCallBack(2, 8, function (result) {
+    console.log(result);
+});
