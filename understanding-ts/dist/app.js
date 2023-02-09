@@ -1,3 +1,4 @@
+"use strict";
 // const ADMIN = 0
 // const READ_ONLY = 1
 // const AUTHOR = 2
@@ -60,9 +61,9 @@
 // combineValues = add;
 // console.log(combineValues(2,4))
 function addAndCallBack(n1, n2, cb) {
-    var result = n1 + n2;
+    const result = n1 + n2;
     cb(result);
 }
-addAndCallBack(2, 8, function (result) {
+addAndCallBack(2, 8, (result) => {
     console.log(result);
 });
