@@ -1,39 +1,44 @@
 "use strict";
-const e1 = {
-    name: 'Ankit',
-    privileges: ['amount'],
-    startDate: new Date()
+// type Admin = {
+//     name:string,
+//     privileges:string[]
+// }
+var _a;
+function getAnimal(anm) {
+    let speed;
+    switch (anm.type) {
+        case 'bird':
+            speed = anm.flyingSpeed;
+            break;
+        case 'horse':
+            speed = anm.runningSpeed;
+    }
+    console.log(`speed of this animal is ${speed}`);
+}
+getAnimal({ type: 'bird', flyingSpeed: 10 });
+const UserInputElement = document.getElementById('input-value');
+UserInputElement.value = 'test';
+const errorBag = {
+    email: 'Not a valid Email',
+    name: 'Must start with a capital character'
 };
-console.log(e1);
-function printEmployeeInformation(emp) {
-    if ('privileges' in emp) {
-        console.log('Privelleged ', +emp.privileges);
+function add(a, b) {
+    if (typeof (a) == 'string' || typeof (b) == 'string') {
+        return a.toString() + b.toString();
     }
-    if ('startDate' in emp) {
-        console.log('Start date', +emp.startDate);
-    }
+    return a + b;
 }
-printEmployeeInformation({ name: 'Max', startDate: new Date() });
-class Car {
-    drive() {
-        console.log('driving...');
+const result = add('Max', 'Schemuller');
+result.split('');
+const fetchedUserData = {
+    id: 'u1',
+    name: 'ankit',
+    job: {
+        title: 'CEO',
+        description: 'CEO of Tech Company'
     }
-}
-class Truck {
-    drive() {
-        console.log('driving a truck');
-    }
-    loadCargo(amount) {
-        console.log('Loading cargo ...' + amount);
-    }
-}
-const v1 = new Car();
-const v2 = new Truck();
-function useVechile(vehicle) {
-    vehicle.drive();
-    if (vehicle instanceof Truck) {
-        vehicle.loadCargo(100);
-    }
-}
-useVechile(v1);
-useVechile(v2);
+};
+console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
+const userInput = '';
+const storedData = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
+console.log(storedData);
