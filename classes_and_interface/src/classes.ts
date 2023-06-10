@@ -40,14 +40,14 @@ class AccountingDepartment extends Department{
           return this.lastReport;
         }
         throw new Error('No report found.');
-      }
+    }
     
-      set mostRecentReport(value: string) {
+    set mostRecentReport(value: string) {
         if (!value) {
           throw new Error('Please pass in a valid value!');
         }
         this.addReports(value);
-      }
+    }
 
     private constructor(id: string, public reports: string[]){
         super(id, 'Account-Department')
@@ -67,7 +67,7 @@ class AccountingDepartment extends Department{
     }
 
     
-    addEmployee(employee: string){
+    addEmployee(employee: string) {
         if(employee === 'Max'){
             return
         }

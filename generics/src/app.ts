@@ -10,39 +10,60 @@
 //     data.split(' ')
 // })
 
-// function merge<T, U>(objA: T, objB: U){
-//     return Object.assign(objA, objB)
+
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+  return Object.assign(objA, objB);
+}
+
+
+
+const mergeObj = merge<{name:string, hobbies:string[]},{age:number}>({name:'Ankit', hobbies:['sports']},{age:29})
+console.log(mergeObj)
+
+// interface Lengthy{
+//   length:Number
 // }
 
-// function merge<T,U>(objA: T,objB: U){
-//     return Object.assign(objA , objB)
+// function countAndDescribe<T extends Lengthy>(elememt: T){
+//   let descriptionText = 'no value'
+//   if(elememt.length == 1){
+//     descriptionText = 'Got 1 element'
+//   } else if(elememt.length > 1){
+//     descriptionText = `Got ${elememt.length} element`
+//   } 
+//   return [elememt,descriptionText]
 // }
 
-// function merge<T extends object, U extends object>(objA: T, objB: U) {
-//     return Object.assign(objA, objB);
-//   }
+// console.log(countAndDescribe('t'))
 
-// const mergeObj = merge({name:'Ankit', hobbies:['sports']},{age:29})
-// console.log(mergeObj)
+// function extractAndConvert<T extends object, U extends keyof T>(obj:T, key:U){
+//   return 'Value ' + obj[key]
+// }
 
-interface Lengthy{
-  length:Number
+// extractAndConvert({name:'ankit'}, 'name')
+
+// Generic classes
+
+class Generic<T extends string | number | boolean> {
+  private data: T[] = []
+
+  addItem(item:T){
+    this.data.push(item)
+  }
+
+  removeItem(item:T){
+    this.data.splice(this.data.indexOf(item), 1)
+  }
+
+  getItems(){
+    return [...this.data]
+  }
+
+
 }
 
-function countAndDescribe<T extends Lengthy>(elememt: T){
-  let descriptionText = 'no value'
-  if(elememt.length == 1){
-    descriptionText = 'Got 1 element'
-  } else if(elememt.length > 1){
-    descriptionText = `Got ${elememt.length} element`
-  } 
-  return [elememt,descriptionText]
-}
-
-console.log(countAndDescribe('t'))
-
-function extractAndConvert<T extends object, U extends keyof T>(obj:T, key:U){
-  return 'Value ' + obj[key]
-}
-
-extractAndConvert({name:'ankit'}, 'name')
+const genericData = new Generic<string>()
+genericData.addItem('test')
+console.log(genericData)
+// genericData.removeItem('test')
+// genericData.getItems()

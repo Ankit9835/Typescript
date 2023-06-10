@@ -6,6 +6,18 @@ function add(num1: number, num2: number) {
   return num1 + num2;
 }
 
-button.addEventListener("click", function() {
-  console.log(add(+input1.value, +input2.value));
-});
+add(5,7)
+
+const person: {
+  name:string,
+  age:number
+} = {
+  name:'ankit',
+  age:20
+}
+
+console.log(person.name)
+
+// button.addEventListener("click", function() {
+//   console.log(add(+input1.value, +input2.value));
+// });
