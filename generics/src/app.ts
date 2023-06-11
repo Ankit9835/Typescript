@@ -67,3 +67,35 @@ genericData.addItem('test')
 console.log(genericData)
 // genericData.removeItem('test')
 // genericData.getItems()
+
+interface CourseGoal {
+  title:string;
+  description:string;
+  countuntildate:Date;
+}
+
+function createCourseGoal(title:string,description:string,countuntildate:Date): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {}
+  courseGoal.title = title;
+  courseGoal.description = description
+  courseGoal.countuntildate = countuntildate
+  return courseGoal as CourseGoal
+}
+
+const names: Readonly<string[]> = ['ankit','sam']
+
+function Logger(constructor: Function) {
+  console.log('logging')
+  console.log(constructor)
+}
+
+@Logger
+class Person {
+  name = 'Max'
+
+  constructor(){
+    console.log('creating person object')
+  }
+
+}
+ 
