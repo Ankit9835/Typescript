@@ -89,3 +89,67 @@ function WithTemplate(template: string, hookId: string){
     }
 
   }
+
+  function Analog(_:any, _2:string, descriptor:PropertyDescriptor){
+    const originalMethod = descriptor.value
+   const adjDescriptor: PropertyDescriptor = {
+    configurable: true,
+    enumerable: false,
+    get() {
+      const boundFn = originalMethod.bind(this);
+      return boundFn;
+    }
+   }
+   return adjDescriptor
+  }
+
+  class Printer {
+    message = 'this works'
+    @Analog
+    showMessage(){
+      console.log(this.message)
+    }
+  }
+
+  const p = new Printer()
+  p.showMessage()
+
+  const btnClick = document.querySelector('button')!
+  btnClick.addEventListener('click', p.showMessage)
+
+  function Required(){
+
+  }
+
+  function PositiveNumber(){
+
+  }
+
+  function Validator(){
+
+  }
+
+
+  class Course {
+    @Required
+    title:string
+    @PositiveNumber
+    price:number
+
+    constructor(t:string, p:number){
+      this.title = t;
+      this.price = p;
+    }
+  }
+
+  const courseForm = document.querySelector('form')!
+  courseForm.addEventListener('submit', event => {
+    event.preventDefault()
+    const title = document.getElementById('title') as HTMLInputElement
+    const price = document.getElementById('price') as HTMLInputElement
+    const elTitle = title.value
+    const elPrice = +price.value
+    @Validator
+    const createdCourse = new Course(elTitle,elPrice)
+    console.log(createdCourse)
+  })

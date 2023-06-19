@@ -88,3 +88,58 @@ __decorate([
     Log3,
     __param(0, Log4)
 ], Product.prototype, "getPriceWithTax", null);
+function Analog(_, _2, descriptor) {
+    const originalMethod = descriptor.value;
+    const adjDescriptor = {
+        configurable: true,
+        enumerable: false,
+        get() {
+            const boundFn = originalMethod.bind(this);
+            return boundFn;
+        }
+    };
+    return adjDescriptor;
+}
+class Printer {
+    constructor() {
+        this.message = 'this works';
+    }
+    showMessage() {
+        console.log(this.message);
+    }
+}
+__decorate([
+    Analog
+], Printer.prototype, "showMessage", null);
+const p = new Printer();
+p.showMessage();
+const btnClick = document.querySelector('button');
+btnClick.addEventListener('click', p.showMessage);
+function Required() {
+}
+function PositiveNumber() {
+}
+function Validator() {
+}
+class Course {
+    constructor(t, p) {
+        this.title = t;
+        this.price = p;
+    }
+}
+__decorate([
+    Required
+], Course.prototype, "title", void 0);
+__decorate([
+    PositiveNumber
+], Course.prototype, "price", void 0);
+const courseForm = document.querySelector('form');
+courseForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const title = document.getElementById('title');
+    const price = document.getElementById('price');
+    const elTitle = title.value;
+    const elPrice = +price.value;
+    const createdCourse = new Course(elTitle, elPrice);
+    console.log(createdCourse);
+});
